@@ -1,6 +1,6 @@
-# Web Scraping Example
+# Web Scraping using Amazon ECS
 
-This repository contains hands on content that will guide you through building a simple application to perform web scraping using AWS in two ways. One of them we have been using a FaaS approach (AWS Lambda) and the other one a Container approach (ECS).
+The purpose of this demo is to build a stack that uses Amazon ECS, Selenium, Requests and BeautifulSoup in order to extract content from a given URL. We are using an Amazon ECS, Python3.6 and Selenium to navigate on a page and use the Requests lib to get the HTML file, then we use BeautifulSoup to extract some elements like the all texts and URL's from the page, then we save the output as .txt file in a S3 Bucket.
 
 # Prerequisites
 
@@ -9,17 +9,7 @@ This repository contains hands on content that will guide you through building a
 - [Docker](https://docs.docker.com/get-docker/)
 - Pre configured VPC with minimum of 2 public subnets
 
-**THIS WORKSHOP WAS TESTED IN US-EAST-1 REGION**
-
-# Overview of Hands on Labs
-
-In the demonstration we are going to build a stack to navigate on a web page and extract content from a URL and store the output in a S3 Bucket.
-
-# Getting Started Running Web Scraping using Amazon ECS
-
-The purpose of this demo is to build a stack that uses Amazon ECS, Selenium, Requests and BeautifulSoup in order to extract content from a given URL. We are using an Amazon ECS, Python3.6 and Selenium to navigate on a page and use the Requests lib to get the HTML file, then we use BeautifulSoup to extract some elements like the all texts and URL's from the page, then we save the output as .txt file in a S3 Bucket.
-
-**This demo was tested in us-east-1**
+**THIS DEMO WAS TESTED IN US-EAST-1 REGION**
 
 # Setup instructions
 
