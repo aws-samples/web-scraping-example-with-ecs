@@ -11,20 +11,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 
-def getURL(URL, KEYWORD, ELEMENT_NAME):
-    CHROME_PATH = '/usr/local/bin/chromedriver'
-
+def getURL(URL, ELEMENT_NAME):
     option = webdriver.ChromeOptions()
     option.add_argument('--headless')
     option.add_argument('--no-sandbox')
     option.add_argument('--disable-gpu')
-    driver = webdriver.Chrome(options=option, executable_path=CHROME_PATH)        
+    driver = webdriver.Chrome(options=option)        
     driver.get(URL)
-    elem = driver.find_element_by_name(ELEMENT_NAME)
-    elem.clear()
-    elem.send_keys(KEYWORD)
-    elem.send_keys(Keys.RETURN)
-    assert "No results found." not in driver.page_source
+    elem = driver.find_element(by='id', value=ELEMENT_NAME)
+    elem.click()
     time.sleep(3)
     current_url = driver.current_url
     driver.close()
@@ -33,9 +28,8 @@ def getURL(URL, KEYWORD, ELEMENT_NAME):
 
 def demo():
     URL = "https://www.python.org"
-    KEYWORD = "I love python"
-    ELEMENT_NAME = "q"  
-    current_url = getURL(URL, KEYWORD, ELEMENT_NAME) #Using Selenium to navigate in the web page
+    ELEMENT_NAME = "downloads"  
+    current_url = getURL(URL, ELEMENT_NAME) #Using Selenium to navigate in the web page
     r = requests.get(current_url) #Getting the page using Requests
 
     soup = BeautifulSoup(r.text, 'html.parser')
