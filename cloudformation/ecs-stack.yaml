@@ -67,6 +67,7 @@ Resources:
 
                 # Allow the ECS tasks to upload logs to CloudWatch
                 - 'logs:CreateLogStream'
+                - 'logs:CreateLogGroup'
                 - 'logs:PutLogEvents'
               Resource: '*'
   
@@ -106,6 +107,13 @@ Resources:
           Command: 
             - python
             - main.py
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              "awslogs-group": "demo-container"
+              "awslogs-region": "us-west-2"
+              "awslogs-create-group": "true"
+              "awslogs-stream-prefix": "demo"
   # Service Security Group
   PythonSecurityGroup:
     Type: AWS::EC2::SecurityGroup
